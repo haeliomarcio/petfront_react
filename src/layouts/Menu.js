@@ -11,6 +11,9 @@ function Menu() {
                 <Link to="/dashboard">Dashboard</Link>
             </MenuItem>
             <MenuItem>
+                <Link to="/usuarios">Usuários</Link>
+            </MenuItem>
+            <MenuItem>
                 <Link to="/login">Login</Link>
             </MenuItem>
         </Box>
