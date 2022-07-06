@@ -1,33 +1,40 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 function FormUsuarios(){
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    function submit() {
+    function submit(event) {
+        event.preventDefault();
         const data = {
-            nome: nome,
-            email: email,
-            senha: password
+            "nome": nome,
+            "email": email,
+            "senha": password
         };
         fetch("http://localhost:3001/usuarios",{
             method: 'POST',
-            body: data
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
         })
         .then(function(response){
             return response.json();
         })
         .then(function(json){
-
+            alert("Usuário Registrado com Sucesso");
         })
         .catch(function(error) {
             alert(error);
         });
     }
 
+
     return (
         <div>
             <h3>Novo Usuário</h3>
+            <Link to="/usuarios">Listar Usuários</Link>
             <form onSubmit={submit}>
                 <br />
                 <label>Nome</label>
