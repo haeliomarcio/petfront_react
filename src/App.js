@@ -18,7 +18,8 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/usuarios" element={<ListaUsuarios />} />
             <Route path="/usuarios/novo" element={<FormUsuarios />} />
-          </Routes>
+            <Route path="/usuarios/editar/:id" element={<FormUsuarios />} />
+          </Routes> 
         </BrowserRouter>
     </div>
   );

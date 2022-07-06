@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+
 function ListaUsuarios() {
     const [lista, setLista] = useState([]);
     function listarDados(){
@@ -49,7 +50,7 @@ function ListaUsuarios() {
                                 <td>{item.nome}</td>
                                 <td>{item.email}</td>
                                 <td>
-                                    <button>Editar</button>
+                                    <Link to={`/usuarios/editar/${item.id}`}>Editar</Link>
                                     <button onClick={() => { excluir(item.id) }}>Excluir</button>
                                 </td>
                             </tr>
