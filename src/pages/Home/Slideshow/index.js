@@ -1,12 +1,24 @@
-export function Slideshow2() {
+export function Slideshow2(props) {
     return (
-        <img src="https://img.freepik.com/fotos-gratis/paisagem-natural-em-um-jardim-botanico_35355-5948.jpg" />
+        <img src={props.image} />
     );
 }
 
-export default function Slideshow() {
+export function Avatar(props) {
     return (
-        <img src="https://www.grupoescolar.com/wp-content/uploads/2021/03/paisagem-2C.jpg" />
+        <img 
+            style={{ width: '50px', height: '50px', borderRadius: '50%' }} 
+            src={props.src} 
+            alt={props.alt}
+        />
     );
 }
 
+export default function Slideshow(props) {
+    return (
+        <img src={props.image} />
+    );
+}
+
+
+// 
