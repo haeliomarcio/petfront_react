@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+a {
+  text-decoration: none;
+}
+
+.menu {
+  background-color: blue;
+  margin-bottom: 10px;
+}
+.menu li a {
+  color: #FFF;
+}

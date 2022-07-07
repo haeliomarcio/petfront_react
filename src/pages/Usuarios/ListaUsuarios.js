@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+import { Table, TableHead, TableBody, TableCell, TableRow, Button } from "@mui/material";
+import Swal from 'sweetalert2'
 
 function ListaUsuarios() {
     const [lista, setLista] = useState([]);
@@ -20,7 +22,12 @@ function ListaUsuarios() {
             return response.json();
         })
         .then(function(json){
-           alert("Excluido com sucesso.");
+            Swal.fire({
+                title: 'Exclusão',
+                text: 'Registro Excluído com Sucesso',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            });
            listarDados();
         })
     }
@@ -33,31 +40,38 @@ function ListaUsuarios() {
     }, []);
     return (
         <div>
-            <Link to="/usuarios/novo">Novo Usuário</Link>
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nome</th>
-                        <th>E-mail</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <Link to="/usuarios/novo">
+                <Button size="small" variant="contained">Novo Usuário</Button>
+            </Link>
+            <Table>
+                <TableHead>
+                    <TableRow>
+                        <TableCell>#</TableCell>
+                        <TableCell>Nome</TableCell>
+                        <TableCell>E-mail</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
                     {lista.map(function(item, index) {
                         return (
-                            <tr>
-                                <td>{item.id}</td>
-                                <td>{item.nome}</td>
-                                <td>{item.email}</td>
-                                <td>
-                                    <Link to={`/usuarios/editar/${item.id}`}>Editar</Link>
-                                    <button onClick={() => { excluir(item.id) }}>Excluir</button>
-                                </td>
-                            </tr>
+                            <TableRow>
+                                <TableCell>{item.id}</TableCell>
+                                <TableCell>{item.nome}</TableCell>
+                                <TableCell>{item.email}</TableCell>
+                                <TableCell>
+                                    <Link to={`/usuarios/editar/${item.id}`}>
+                                        <Button>
+                                            Editar
+                                        </Button>
+                                    </Link>
+                                    <Button onClick={() => { excluir(item.id) }}>Excluir</Button>
+                                </TableCell>
+                            </TableRow>
                         );
                     })}
-                </tbody>
-            </table>
+                </TableBody>
+            </Table>
+          
         </div>
     );
 }

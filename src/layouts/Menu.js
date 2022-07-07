@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Menu() {
     return (
-        <Box container="nav" sx={{ display: 'flex' }}>
+        <Box container="nav" className="menu" sx={{ display: 'flex' }}>
             <MenuItem>
                 <Link to="/">Home</Link>
             </MenuItem>
