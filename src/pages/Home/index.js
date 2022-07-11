@@ -10,7 +10,10 @@ function Home() {
             <Slideshow 
                 image="https://th.bing.com/th/id/OIP.ikV1GusGbsElrSH-S7o5DwHaEo?pid=ImgDet&rs=1"
             /> */}
-            <Avatar alt="Remy Sharp" src="https://th.bing.com/th/id/OIP.ikV1GusGbsElrSH-S7o5DwHaEo?pid=ImgDet&rs=1" />
+            <Avatar 
+                alt="Remy Sharp" 
+                src="https://th.bing.com/th/id/OIP.ikV1GusGbsElrSH-S7o5DwHaEo?pid=ImgDet&rs=1" 
+            />
             <Avatar alt="Remy Sharp" src="https://img.freepik.com/fotos-gratis/paisagem-natural-em-um-jardim-botanico_35355-5948.jpg" />
             
         </div>

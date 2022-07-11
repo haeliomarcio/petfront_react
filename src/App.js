@@ -6,6 +6,7 @@ import Menu from './layouts/Menu';
 import ListaUsuarios from './pages/Usuarios/ListaUsuarios';
 import FormUsuarios from './pages/Usuarios/FormUsuarios';
 import { Container } from '@mui/material';
+import RoutePrivate from './routes/RoutePrivate';
 
 function App() {
   return (
@@ -13,14 +14,22 @@ function App() {
         <BrowserRouter>
           <Menu />
           <Container>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/usuarios" element={<ListaUsuarios />} />
-              <Route path="/usuarios/novo" element={<FormUsuarios />} />
-              <Route path="/usuarios/editar/:id" element={<FormUsuarios />} />
-            </Routes> 
+            <>
+              <RoutePrivate 
+                path="/"
+                element={<Home />} 
+                isPrivate={false} 
+              />
+              <RoutePrivate 
+                path="/login" 
+                element={<Login />}
+                isPrivate={false}
+              />
+              <RoutePrivate path="/dashboard" element={<Dashboard />} isPrivate={true} />
+              <RoutePrivate path="/usuarios" element={<ListaUsuarios />} isPrivate={true}/>
+              <RoutePrivate path="/usuarios/novo" element={<FormUsuarios />} isPrivate={true} />
+              <RoutePrivate path="/usuarios/editar/:id" element={<FormUsuarios />} isPrivate={true}/>
+            </> 
           </Container>
         </BrowserRouter>
     </div>
