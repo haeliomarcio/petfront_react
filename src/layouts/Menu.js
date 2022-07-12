@@ -1,7 +1,11 @@
 import { Box, MenuItem } from '@mui/material';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../contexts/auth';
+
 
 function Menu() {
+    const { setIsLogged } = useContext(AuthContext);
     return (
         <Box container="nav" className="menu" sx={{ display: 'flex' }}>
             <MenuItem>
@@ -14,7 +18,7 @@ function Menu() {
                 <Link to="/usuarios">Usuários</Link>
             </MenuItem>
             <MenuItem>
-                <Link to="/login">Login</Link>
+                <a href onClick={() => setIsLogged(false)}>Logout</a>
             </MenuItem>
         </Box>
     );

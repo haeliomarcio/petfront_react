@@ -1,16 +1,37 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Container, Box, Typography, TextField, Button, Checkbox, FormGroup, FormLabel, FormControlLabel, Grid } from '@mui/material';
 import { eventWrapper } from '@testing-library/user-event/dist/utils';
+import { AuthContext } from '../../contexts/auth';
 function Login() {
-    const [email, setEmail] = useState('');
-
-    function handleChange(event){
-        const value = event.target.value;
-        setEmail(value);
-    }
     
+    const { setIsLogged } = useContext(AuthContext);
+
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
+    function handleChange(event){
+        if(event.target.name === 'email') {
+            setEmail(event.target.value);
+        }
+        if(event.target.name === 'password') {
+            setSenha(event.target.value);
+        }
+    }
     function logar(){
-        alert("Fazer Login");
+        
+        setIsLogged(true);
+
+        fetch("http://localhost:3001/usuarios?email="+email)
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(json){
+            console.log(json);
+            if(json.senha === senha) {
+                alert("Sucesso");
+            } else {
+                alert("Login ou senha incorreto.");
+            }
+        })
     }
     
     return (
@@ -29,7 +50,7 @@ function Login() {
                         Login
                     </Typography>
                     <Box component="form" sx={{ mb: 3 }}>
-                        {email}
+                        
                         <TextField
                             label="E-mail"
                             name="email"
@@ -40,6 +61,7 @@ function Login() {
                             style={{ marginTop: '15px' }}
                             onChange={handleChange}
                         />
+                        
                         <TextField
                             label="Senha" 
                             name="password" 
@@ -48,6 +70,7 @@ function Login() {
                             variant='outlined'
                             fullWidth
                             style={{ marginTop: '15px' }}
+                            onChange={handleChange}
                         />
                         <FormGroup>
                             <FormControlLabel 
