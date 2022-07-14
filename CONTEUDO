@@ -1,0 +1,44 @@
+CONTEUDO GERAL
+1. INTRODUÇÃO AO REACT
+2. INSTALAÇÃO DO REACT
+3. ARQUITETURA
+4. CRIANDO COMPONENTS
+5. ROTAS
+6. PROPS
+7. CRUD
+8. CONTEXT API
+9. REDUX
+10. TESTES COM CYPRESS
+11. BUILD
+12. PUBLICAÇÃO
+
+------------------------------------
+----------------------------------
+11/07/22
+CONTEXT API E ROTAS PRIVADAS
+
+13/07/22
+SPLASH SCREEN PARA PWA, AXIOS E ASYNC/AWAIT
+
+18/07/22
+REDUX E TESTES CYPRESS
+
+20/07/22
+PUBLICANDO NA DIGITAL OCEAN
+
+25/07/22
+FINALIZAÇÃO
+
+
+1. CRIAR PASTA FRONTEND_18
+2. ABRIR PASTA PELO VSCODE E ABRIR O PROMPT
+3. DAR O COMANDO:
+
+git clone https://github.com/haeliomarcio/petfront_react
+
+4. DEPOIS DAR UM CD nome_da_pasta
+5. npm install -g json-server
+
+
+json-server --watch db.json --port 3001
+npm start

@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Container, Box, Typography, TextField, Button, Checkbox, FormGroup, FormLabel, FormControlLabel, Grid } from '@mui/material';
 import { eventWrapper } from '@testing-library/user-event/dist/utils';
 import { AuthContext } from '../../contexts/auth';
+import api, { find } from '../../core/api';
 function Login() {
     
     const { setIsLogged } = useContext(AuthContext);
@@ -16,22 +17,17 @@ function Login() {
             setSenha(event.target.value);
         }
     }
-    function logar(){
+    
+    async function logar(){
         
-        setIsLogged(true);
+        const response = await find("usuarios", "email="+email);
+        if(response.data[0].senha === senha) {
+            alert("Login realizado com sucesso.");
+            setIsLogged(true);
+        } else {
+            alert("Login ou senha incorreto.")
+        }
 
-        fetch("http://localhost:3001/usuarios?email="+email)
-        .then(function(response){
-            return response.json();
-        })
-        .then(function(json){
-            console.log(json);
-            if(json.senha === senha) {
-                alert("Sucesso");
-            } else {
-                alert("Login ou senha incorreto.");
-            }
-        })
     }
     
     return (

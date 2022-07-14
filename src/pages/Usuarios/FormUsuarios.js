@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Box, TextField, Button } from '@mui/material';
 import Swal from 'sweetalert2'
+import { findById } from '../../core/api';
 
 function FormUsuarios(){
         const [nome, setNome] = useState('');
@@ -61,19 +62,12 @@ function FormUsuarios(){
             });
         }
 
-        function getData() {
-            fetch("http://localhost:3001/usuarios/"+id)
-            .then(function(response){
-                return response.json();
-            })
-            .then(function(json){
-                setNome(json.nome);
-                setEmail(json.email);
-                setJson(json);
-            })
-            .catch(function(error) {
-                alert(error);
-            });
+        async function getData() {
+            const response = await findById('usuarios', id);
+            const user = response.data;
+            setNome(user.nome);
+            setEmail(user.email);
+            setJson(user);
         }
 
         useEffect(() => {

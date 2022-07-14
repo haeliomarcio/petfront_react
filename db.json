@@ -11,12 +11,6 @@
       "email": "teste@tete",
       "senha": "123",
       "id": 3
-    },
-    {
-      "nome": "teste@",
-      "email": "teste@tete",
-      "senha": "123",
-      "id": 4
     }
   ],
   "pets": [

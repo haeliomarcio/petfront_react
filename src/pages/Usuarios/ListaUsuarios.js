@@ -2,34 +2,24 @@ import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { Table, TableHead, TableBody, TableCell, TableRow, Button } from "@mui/material";
 import Swal from 'sweetalert2'
+import { destroy, find } from '../../core/api';
 
 function ListaUsuarios() {
     const [lista, setLista] = useState([]);
-    function listarDados(){
-        fetch("http://localhost:3001/usuarios")
-        .then(function(response){
-            return response.json();
-        })
-        .then(function(json){
-            setLista(json);
-        });
+    async function listarDados(){
+        const response = await find('usuarios', '');
+        setLista(response.data);
     }
-    function excluir(id){
-        fetch("http://localhost:3001/usuarios/"+id, {
-            method: "DELETE"
-        })
-        .then(function(response){
-            return response.json();
-        })
-        .then(function(json){
-            Swal.fire({
-                title: 'Exclusão',
-                text: 'Registro Excluído com Sucesso',
-                icon: 'success',
-                confirmButtonText: 'Ok'
-            });
-           listarDados();
-        })
+    
+    async function excluir(id){
+        await destroy('usuarios', id);
+        Swal.fire({
+            title: 'Exclusão',
+            text: 'Registro Excluído com Sucesso',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+        });
+        listarDados();
     }
     // function(param1, param2...){
     // 
