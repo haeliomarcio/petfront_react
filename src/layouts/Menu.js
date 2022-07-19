@@ -6,6 +6,11 @@ import { AuthContext } from '../contexts/auth';
 
 function Menu() {
     const { setIsLogged } = useContext(AuthContext);
+
+    function logout() {
+        localStorage.removeItem('token@petfront');
+        setIsLogged(false);
+    }
     return (
         <Box container="nav" className="menu" sx={{ display: 'flex' }}>
             <MenuItem>
@@ -18,7 +23,7 @@ function Menu() {
                 <Link to="/usuarios">Usuários</Link>
             </MenuItem>
             <MenuItem>
-                <a href onClick={() => setIsLogged(false)}>Logout</a>
+                <a href onClick={() => logout()}>Logout</a>
             </MenuItem>
         </Box>
     );

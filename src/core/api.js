@@ -1,7 +1,9 @@
 import axios from 'axios';
+const token = localStorage.getItem('token@petfront');
+
 const api = axios.create({
     baseURL: 'http://localhost:3001/',
-    headers: {'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9'}
+    headers: {'Authorization': token}
 });
 
 export function findById(recurso, id) {
