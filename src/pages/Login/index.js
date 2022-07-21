@@ -18,7 +18,6 @@ function Login() {
     } 
     async function logar(){
         const response = await find("usuarios", "email="+email);
-        
         if(response.data[0].senha === senha) {
             alert("Login realizado com sucesso.");
             localStorage.setItem('token@petfront', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9');

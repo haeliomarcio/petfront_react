@@ -1,8 +1,24 @@
-import { Box, MenuItem } from '@mui/material';
-import { useContext } from 'react';
+import { Box, Drawer, MenuItem, Button } from '@mui/material';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../contexts/auth';
-
+import { FaBars } from 'react-icons/fa';
+export function MenuMobile() {
+    const [visible, setVisible] = useState(false);
+    return (
+        <>
+            <Button onClick={() => setVisible(true)}>
+                <FaBars size="24px" color="black" />
+            </Button>
+            <Drawer
+                open={visible}
+                onClose={() => setVisible(false)}
+            >
+                <Menu />
+            </Drawer>
+        </>
+    );
+}
 
 function Menu() {
     const { setIsLogged } = useContext(AuthContext);
@@ -12,7 +28,7 @@ function Menu() {
         setIsLogged(false);
     }
     return (
-        <Box container="nav" className="menu" sx={{ display: 'flex' }}>
+        <Box container="nav" className="menu">
             <MenuItem>
                 <Link to="/">Home</Link>
             </MenuItem>

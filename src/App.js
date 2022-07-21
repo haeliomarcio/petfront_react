@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import './index.css';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
@@ -14,7 +15,7 @@ function App() {
     <div className="App">
       <AuthProvider>
         <BrowserRouter>
-          <Container>
+          <>
               <RoutePrivate 
                 path="/"
                 element={<Home />} 
@@ -30,7 +31,7 @@ function App() {
               <RoutePrivate path="/usuarios/novo" element={<FormUsuarios />} isPrivate={true} />
               <RoutePrivate path="/usuarios/editar/:id" element={<FormUsuarios />} isPrivate={true}/>
             
-          </Container>
+          </>
         </BrowserRouter>
       </AuthProvider>
     </div>

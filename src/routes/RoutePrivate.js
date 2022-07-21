@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AuthContext } from "../contexts/auth";
+import DefaultLayout from "../layouts/DefaultLayout";
 import Menu from "../layouts/Menu";
 
 import Login from "../pages/Login";
@@ -12,10 +13,9 @@ function Private(props) {
         )
     }
     return (
-        <>
-            <Menu />
+        <DefaultLayout>
             {props.children}
-        </>
+        </DefaultLayout>
     );
 }
 
