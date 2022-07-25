@@ -3,6 +3,8 @@ import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../contexts/auth';
 import { FaBars } from 'react-icons/fa';
+import { AiOutlineHome } from 'react-icons/ai';
+
 export function MenuMobile() {
     const [visible, setVisible] = useState(false);
     return (
@@ -30,7 +32,10 @@ function Menu() {
     return (
         <Box container="nav" className="menu">
             <MenuItem>
-                <Link to="/">Home</Link>
+                <Link to="/">
+                    <AiOutlineHome />
+                    Home
+                </Link>
             </MenuItem>
             <MenuItem>
                 <Link to="/dashboard">Dashboard</Link>

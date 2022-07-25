@@ -4,13 +4,13 @@ import { createContext } from "react";
 export const AuthContext = createContext({});
 
 function AuthProvider(props) {
-    const [isLogged, setIsLogged] = useState(false);
+    const [isLogged, setIsLogged] = useState(true);
 
     useEffect(() => {
         if(localStorage.getItem('token@petfront')) {
             setIsLogged(true);
         } else {
-            setIsLogged(false);
+            setIsLogged(true);
         }
     }, []);
 
